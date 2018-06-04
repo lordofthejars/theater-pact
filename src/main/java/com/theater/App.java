@@ -1,4 +1,4 @@
-package com.spacex;
+package com.theater;
 
 public class App
 {

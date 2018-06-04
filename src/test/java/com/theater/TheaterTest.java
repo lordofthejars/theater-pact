@@ -1,4 +1,4 @@
-package com.spacex;
+package com.theater;
 
 import static org.junit.Assert.assertEquals;
 
@@ -12,18 +12,18 @@ import au.com.dius.pact.consumer.dsl.PactDslJsonBody;
 import au.com.dius.pact.consumer.dsl.PactDslWithProvider;
 import au.com.dius.pact.model.RequestResponsePact;
 
-public class ThunderdomeTest {
+public class TheaterTest {
     @Rule
-    public PactProviderRuleMk2 mockProvider = new PactProviderRuleMk2("Thunderdome", "localhost", 8080, this);
+    public PactProviderRuleMk2 mockProvider = new PactProviderRuleMk2("Movie", "localhost", 8080, this);
 
-    @Pact(consumer="SpaceX")
+    @Pact(consumer="Theater")
     public RequestResponsePact createFragment(PactDslWithProvider builder) {
         PactDslJsonBody body = new PactDslJsonBody()
-            .stringType("Name", "Mel Gibson");
+            .stringType("Name", "Avengers: Infinity War");
 
         return builder
-            .uponReceiving("Fighter details")
-                .path("/fighter/1")
+            .uponReceiving("Movie details")
+                .path("/movie/1")
                 .method("GET")
             .willRespondWith()
                 .status(200)
@@ -34,10 +34,10 @@ public class ThunderdomeTest {
     @Test
     @PactVerification
     public void getsFighter() {
-        Thunderdome thunderdome = new Thunderdome();
+        Theater theater = new Theater();
 
-        Fighter fighter = thunderdome.getFighter();
+        Movie movie = theater.getMovie();
 
-        assertEquals(fighter.Name, "Mel Gibson");
+        assertEquals(movie.Name, "Avengers: Infinity War");
     }
 }

@@ -1,4 +1,4 @@
-package com.spacex;
+package com.theater;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -7,14 +7,14 @@ import java.net.URL;
 
 import com.google.gson.Gson;
 
-public class Thunderdome
+public class Theater
 {
-    public Fighter getFighter() {
+    public Movie getMovie() {
         Gson gson = new Gson();
-        Fighter fighter = new Fighter();
+        Movie movie = new Movie();
 
         try {
-            URL url = new URL("http://localhost:8080/fighter/1");
+            URL url = new URL("http://localhost:8080/movie/1");
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
 
@@ -26,13 +26,13 @@ public class Thunderdome
                 sb.append(line);
             }
 
-            fighter = gson.fromJson(sb.toString(), Fighter.class);
+            movie = gson.fromJson(sb.toString(), Movie.class);
 
             bufferedReader.close();
         } catch (Exception e) {
             //TODO: handle exception
         }
 
-        return fighter;
+        return movie;
     }
 }

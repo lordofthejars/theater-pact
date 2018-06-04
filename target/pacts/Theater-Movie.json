@@ -1,16 +1,16 @@
 {
     "provider": {
-        "name": "Thunderdome"
+        "name": "Movie"
     },
     "consumer": {
-        "name": "SpaceX"
+        "name": "Theater"
     },
     "interactions": [
         {
-            "description": "Fighter details",
+            "description": "Movie details",
             "request": {
                 "method": "GET",
-                "path": "/fighter/1"
+                "path": "/movie/1"
             },
             "response": {
                 "status": 200,
@@ -18,7 +18,7 @@
                     "Content-Type": "application/json; charset=UTF-8"
                 },
                 "body": {
-                    "Name": "Mel Gibson"
+                    "Name": "Avengers: Infinity War"
                 },
                 "matchingRules": {
                     "body": {
